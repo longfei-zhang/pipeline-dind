@@ -30,7 +30,7 @@ spec:
         container('maven') {
           sh 'mvn -version'
         }
-        container('busybox') {
+        container('docker-dind') {
           sh 'docker --version'
         }
       }
