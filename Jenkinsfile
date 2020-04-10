@@ -17,7 +17,7 @@ spec:
     - cat
     tty: true
   - name: docker-dind
-    image: docker:dind
+    image: hub.easystack.io/production/docker:dind-with-test-dockerfile
     command:
     - cat
     tty: true
@@ -31,7 +31,7 @@ spec:
           sh 'mvn -version'
         }
         container('docker-dind') {
-          sh 'docker --version'
+          sh 'cd /root && docker build -t ubuntu-with-vi-dockerfile .'
         }
       }
     }
