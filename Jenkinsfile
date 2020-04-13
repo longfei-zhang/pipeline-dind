@@ -18,6 +18,8 @@ spec:
     tty: true
   - name: docker-dind
     image: hub.easystack.io/production/docker:dind-with-test-dockerfile
+    securityContext:
+      privileged: true
     command:
     - cat
     tty: true
