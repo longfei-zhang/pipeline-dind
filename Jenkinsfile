@@ -17,7 +17,7 @@ spec:
     - cat
     tty: true
   - name: docker-dind
-    image: hub.easystack.io/production/docker:dind-with-test-dockerfile
+    image: docker-dind
     securityContext:
       privileged: true
     command:
@@ -27,13 +27,13 @@ spec:
     }
   }
   stages {
-    stage('Run maven') {
+    stage('Test Stage1') {
       steps {
         container('maven') {
           sh 'mvn -version'
         }
         container('docker-dind') {
-          sh 'cd /root && docker build -t ubuntu-with-vi-dockerfile .'
+          sh 'cd /root && docker build -t busybox-with-ftp .'
         }
       }
     }
